@@ -1,9 +1,10 @@
 from flask import Blueprint, jsonify, request
-from app.logic import login
+from app.logic import login_logic as login
 
-auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
+# login_bp = Blueprint('login', __name__, url_prefix='/login/')
+login_bp = Blueprint('login', __name__, url_prefix='/login')
 
-@auth_bp.route('/login', methods=['POST'])
+@login_bp.route('', methods=['POST'])
 def login_user():
     data = request.get_json()
     if not data or 'username' not in data or 'password' not in data:
