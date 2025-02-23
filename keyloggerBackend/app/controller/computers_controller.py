@@ -18,6 +18,7 @@ get_data_by_computer_bp = Blueprint('getDataByComputer', __name__, url_prefix='/
 @get_data_by_computer_bp.route('/<computer_name>', methods=['GET'])
 def get_data_by_computer(computer_name):
 
+
     decrypted_data =computers.get_data_by_computer(computer_name)
     print(decrypted_data)
 
