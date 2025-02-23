@@ -30,7 +30,7 @@ class WriteToNetwork:
 
     def add_entry(self, new_info):
         data = self.load_data()
-        current_time = datetime.now().strftime("%Y-%m-%d %H:%M")
+        current_time = datetime.now().strftime("%Y-%m-%d %H")
 
         if current_time in data:
             data[current_time].append(new_info)

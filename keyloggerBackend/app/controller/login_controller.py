@@ -4,7 +4,7 @@ from app.logic import login_logic as login
 # login_bp = Blueprint('login', __name__, url_prefix='/login/')
 login_bp = Blueprint('login', __name__, url_prefix='/login')
 
-@login_bp.route('', methods=['POST'])
+@login_bp.route('/', methods=['POST'])
 def login_user():
     data = request.get_json()
     if not data or 'username' not in data or 'password' not in data:

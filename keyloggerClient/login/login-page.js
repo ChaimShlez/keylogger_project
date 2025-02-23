@@ -23,7 +23,7 @@ async function login(event){
     }
 
     try {
-        const url = "http://localhost:5000/login";
+        const url = "http://localhost:5000/login/";
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -41,7 +41,7 @@ async function login(event){
         
         if (data.status === "success") {
             console.log("Login successful");
-            window.location.href = "../home-page/home_page.html";
+            window.location.href = "../home-page/home-page.html";
         } else {
             alert("Invalid credentials");
         }
