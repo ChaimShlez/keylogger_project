@@ -27,15 +27,15 @@ def help_get_profile_by_computer(searches):
     if not api_key:
         raise ValueError("API_KEY is not set in the environment variables.")
 
-    genai.configure(api_key="AIzaSyBNje5gtvcKIeyoSobzu0-1AVD2OTUGMEE")
+    genai.configure(api_key="AIzaSyBLcBjpPEi-QUAil6M-DLyR7IsqZFBe4i8")
 
-    model = genai.GenerativeModel("gemini-pro")
+    model = genai.GenerativeModel("gemini-1.5-pro-latest")
     # response = model.generate_content(
     #     "Build a concise user profile based on the following searches, without listing the searches themselves: " + str(
     #         searches)
     # )
     response = model.generate_content(
-        "Analyze the user's searches and generate a structured profile, including interests, behavior, and possible location, without explicitly listing the searches."
+        "Analyze the user's searches and generate a structured profile."
         + str(
             searches)
     )

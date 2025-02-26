@@ -6,7 +6,6 @@ base_directory = r"C:\devlopment\python\keyloggerProject\keyloggerBackend\data"
 
 def get_names_computer():
 
-    # file_names = [f for f in os.listdir(base_directory) if os.path.isfile(os.path.join(base_directory, f))]
     folder_names = [f for f in os.listdir(base_directory) if os.path.isdir(os.path.join(base_directory, f))]
     print(folder_names)
     return folder_names

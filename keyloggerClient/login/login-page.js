@@ -8,10 +8,10 @@ async function login(event) {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
-    if (!email || !password) {
-        alert("Both email and password are required.");
-        return;
-    }
+    // if (!email || !password) {
+    //     alert("Both email and password are required.");
+    //     return;
+    // }
 
     try {
         const url = "http://localhost:5000/login/";
