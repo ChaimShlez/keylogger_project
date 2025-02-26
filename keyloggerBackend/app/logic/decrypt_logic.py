@@ -16,9 +16,7 @@ class Decryptor:
                 enc_data = json.loads(enc_data)
             except json.JSONDecodeError:
                 raise ValueError("Invalid JSON format: Expected a dictionary-like structure.")
-
         decrypted_data = {}
-
         for time_key, encrypted_list in enc_data.items():
             decrypted_data[time_key] = []
 
