@@ -61,11 +61,17 @@ body {
 }
 
 .table-data {
+    max-height: 400px; /* הגובה המקסימלי של הטבלה */
+    overflow-y: auto; /* גלילה אנכית */
+    width: 90%;
+    margin: auto;
+    border: 1px solid #00ff00;
     width: 90%;
     margin: 20px auto;
 }
 
 .table-data table {
+    
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #00ff00;

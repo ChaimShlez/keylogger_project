@@ -13,8 +13,8 @@ def login_user():
     username = data['username']
     password = data['password']
 
-    login_status = login.check_login(username, password)
-    if login_status:
-        return jsonify({"status": "success"}), 200
+    token = login.check_login(username, password)
+    if token:
+        return jsonify({"token": token}), 200
     else:
         return jsonify({"status": "fail", "error": "Invalid credentials"}), 401

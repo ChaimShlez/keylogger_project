@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="proflie-container">
+        <div class="profile-data">
+             <p id="profile-p">
+
+             </p>
+        </div>
+    </div>
+    <script>
+        
+        const profileData = sessionStorage.getItem("profileData");
+
+        if (profileData) {
+            const data = JSON.parse(profileData);
+            document.getElementById("profile-p").innerText = JSON.stringify(data, null, 2);
+        } else {
+            document.getElementById("profile-p").innerText = "No profile data available.";
+        }
+    </script>
+</body>
+</html>

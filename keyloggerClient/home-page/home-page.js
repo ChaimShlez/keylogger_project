@@ -1,18 +1,23 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadComputers();  
-
-
+    loadComputers();
 });
+
+
 async function loadComputers() {
+
+    const token = sessionStorage.getItem("token");
+    console.log("token",token)
     try {
         const url = "http://localhost:5000/getComputers/";
-        const response = await fetch(url, { method: 'GET' });
+        const response = await fetch(url, { method: 'GET',
+            headers: { Authorization: token } });
+        
 
         if (!response.ok) {
             throw new Error('Failed to fetch computers');
         }
-        const data = await response.json();  
+        const data = await response.json();
         console.log(data);
         const dropdown = document.getElementById("computerDropdown");
 
@@ -22,43 +27,46 @@ async function loadComputers() {
         defaultOption.text = "Select a computer";
         defaultOption.value = "";
         dropdown.appendChild(defaultOption);
-     
+
         data.computers.forEach(computer => {
             const option = document.createElement("option");
-            option.value = computer; 
-            option.text = computer;  
+            option.value = computer;
+            option.text = computer;
             dropdown.appendChild(option);
         });
 
     } catch (error) {
-        console.error(error); 
+        console.error(error);
         alert("Failed to load computers, try again later.");
     }
 }
 
 async function selectedComputer(event) {
-         const computer=event.target.value
-         console.log(computer)
+    const token = sessionStorage.getItem("token");
+    const computer = event.target.value
+    window.selectedComputerName = event.target.value;
+    console.log(computer)
     try {
         const url = `http://localhost:5000/getDataByComputer/${computer}`;
         console.log(url)
-        const response = await fetch(url, { method: 'GET' });  
+        const response = await fetch(url, { method: 'GET',
+            headers: { Authorization: token } });
         console.log(response)
-        if(!response){
+        if (!response) {
             throw new Error('failed to display data')
         }
-        const data = await response.json(); 
-        console.log("Received Data:", data) 
+        const data = await response.json();
+        console.log("Received Data:", data)
         console.log(data)
-        // const items = data.computers ? Object.values(data.computers) : [];
-        const table=document.getElementById("table-body");
+        
+        const table = document.getElementById("table-body");
 
-       table.innerHTML="";
 
-       Object.entries(data).forEach(([date, computerData]) => {
-        if (computerData[computer]) {
-            
-            Object.entries(computerData[computer]).forEach(([platform, input]) => {
+        
+        table.innerHTML = "";
+
+        Object.entries(data).forEach(([date, computerDataArray]) => {
+            computerDataArray.forEach(([platform, input]) => { 
                 const row = `<tr>
                     <td>${date}</td>
                     <td>${platform}</td>
@@ -66,20 +74,22 @@ async function selectedComputer(event) {
                 </tr>`;
                 table.innerHTML += row;
             });
-        }
-    });
+        });
 
 
-
-    document.querySelector(".table-data").style.display = "block"; 
         
+        document.querySelector(".button").style.display = "block";
+
+        document.querySelector(".table-data").style.display = "block";
+
+
     } catch (error) {
         console.error(error);
         alert("Failed to get data.");
-        
+
     }
 
-    
+
 }
 
 window.onload = loadComputers;

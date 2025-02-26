@@ -14,7 +14,7 @@ def save_decrypted_data():
     write_to_network=WriteToNetwork(host_name)
     write_to_network.write(data)
 
-    print(data)
+    print("data",data)
     if not data:
         return jsonify({"error": "No data received"}), 400
     return jsonify({"status": "success"}), 200

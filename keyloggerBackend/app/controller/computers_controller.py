@@ -20,7 +20,7 @@ def get_data_by_computer(computer_name):
 
 
     decrypted_data =computers.get_data_by_computer(computer_name)
-    print(decrypted_data)
+    print("ddd",decrypted_data)
 
     if not decrypted_data:
         return jsonify({"status": "fail", "error": "Invalid credentials"}), 401

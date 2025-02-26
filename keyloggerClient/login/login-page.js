@@ -1,18 +1,9 @@
 
-async function getData() {
-    try {
-        const url = "http://localhost:5000/";  
-        const response = await fetch(url);   
-        const data = await response.json();  
-        console.log(data);                   
-    } catch (error) {
-        console.error("Failed to get data", error);
-    }
-}
 
-async function login(event){
+
+async function login(event) {
     event.preventDefault();
-    console.log("Login function triggered");
+    
 
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
@@ -29,22 +20,19 @@ async function login(event){
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({username: email, password: password})
+            body: JSON.stringify({ username: email, password: password })
         });
-
         if (!response.ok) {
-            throw new Error('Login failed');
+            throw new Error("Login failed, check credentials.");
         }
 
-        const data = await response.json();  
-        console.log(data);
-        
-        if (data.status === "success") {
-            console.log("Login successful");
-            window.location.href = "../home-page/home-page.html";
-        } else {
-            alert("Invalid credentials");
-        }
+        const data = await response.json();
+
+
+        sessionStorage.setItem("token", "Bearer " + data.token);
+        console.log("Token saved:", sessionStorage.getItem("token"));
+        window.location.href = "../home-page/home-page.html";
+
 
     } catch (error) {
         console.error(error);
